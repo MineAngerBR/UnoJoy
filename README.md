@@ -1,8 +1,9 @@
 UnoJoy - Encoder version
 ======
 
-	This version of UnoJoy! (created by Alam Chatham) allows you to use optical encoders or incremental encoders in place of a potentiometer, swill allowing you to easily turn an Arduino Uno or Mega into a PS3-compatible USB game controller.
-	It's still in BETA phase, but its stable to use if correctly configured.
+	This version of UnoJoy! (created by Alam Chatham) allows you to use optical encoders or incremental encoders in
+	place of a potentiometer, swill allowing you to easily turn an Arduino Uno or Mega into a PS3-compatible USB
+	game controller. It's still in BETA phase, but its stable to use if correctly configured.
 
 
 Getting Started
