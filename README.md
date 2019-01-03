@@ -1,7 +1,8 @@
-UnoJoy
+UnoJoy - Encoder version
 ======
 
-	UnoJoy! allows you to easily turn an Arduino Uno (or Mega or Leonardo) into a PS3-compatible USB game controller
+	This version of UnoJoy! (created by Alam Chatham) allows you to use optical encoders or incremental encoders in place of a potentiometer, swill allowing you to easily turn an Arduino Uno or Mega into a PS3-compatible USB game controller.
+	It's still in BETA phase, but its stable to use if correctly configured.
 
 
 Getting Started
@@ -47,15 +48,10 @@ Getting Started
 	Software
 	========
 
-	To get started, first, go to the UnoJoyArduinoSample
-	folder. Open up UnoJoyArduinoSample and upload that code
-	to your Arduino.
-
-	Next, test to make sure that it's working - open up the 
-	UnoJoyProcessingVisualizer sketch in processing and run it.
-	You should see a representation of the controller, and if you
-	ground any of the pins between 2 and 12, you should see
-	buttons on the controller light up.  Now, we move onto the hardware
+	To get started, first, go to the UnoJoyArduinoEncoderSample
+	or the MegaJoyEncoderSample folder. Open up the .ino file
+	and upload that code to your Arduino (don't mix codes and/or
+	firmwares, this can be bad). Now, we move onto the hardware
 
 
 	Hardware
@@ -64,27 +60,47 @@ Getting Started
 	Now that we have the proper code on the Arduino, we need
 	to reprogram the communications chip on the Arduino.
 	In order to do this, you need to first put the Arduino
-	into 'Arduino UNO DFU' mode. The official documentation
-	for this is here
+	into 'DFU' (Device Firmware Update) mode. The official
+	documentation for this is here
 
 	http://arduino.cc/en/Hacking/DFUProgramming8U2
 
 	----HOW TO PUT YOUR ARDUINO INTO DFU MODE----
 	You do that by shorting two of the pins on the block of 6 pins between
 	the USB connector.  Using a piece of wire or other small metal object,
-	connect the 2 pins closes to the USB connector together.
+	connect the 2 pins closest to the USB connector together.
 	(the ones that turn from o to | in the diagram)
-
-						  ---->
-			o o o           |        | o o 
-	----|   o o o           |----|   | o o
-		|                   |    |     
-	USB |                   |USB |      
-		|                   |    |   
-	----|                   |----|
-							|
-	It should disconnect (be-dun.) and reconnect (buh-din!) 
-	and now show up to your system as 'Arduino UNO DFU'.
+	
+	The board is like this \/
+	__________________________________________________________________
+			  o o o     				  	  |
+	USB Type B Port	  o o o    				  	  |
+									  |	
+									  |	
+									  |	
+									  |
+	DC Port								  |
+	__________________________________________________________________|
+	
+	
+	Make the connection/short-circuit like this \/
+	__________________________________________________________________
+			    | o o 				  	  |
+	USB Type B Port	    | o o				  	  |
+									  |	
+									  |	
+									  |	
+									  |
+	DC Port								  |
+	__________________________________________________________________|	
+							
+	The connection can't be kept, it's only like a button push, not a hold button.
+	
+	It should disconnect and reconnect (making the noises
+	if your computer is configured to it), and now shows up
+	to your system as 'Arduino UNO DFU', or showing the 
+	chip's name, like 'ATMega16U2'.
+	
 	In OSX, you will get no feedback from your computer, but
 	the lights on the Arduino will stop flashing.
 
@@ -115,7 +131,7 @@ Getting Started
 		Start->Devices and Printers
 		and you should see it there under 'Unspecified'
 		In Arduino mode, it will appear as 'Arduino UNO (COM 23)'
-		In DFU mode, it will appear as 'Arduino UNO DFU'
+		In DFU mode, it will appear as 'Arduino UNO DFU' or showing the chip's name.
 		In UnoJoy mode, it will appear at the top as 'UnoJoy Joystick'
 
 	On OSX, you should see it:
@@ -123,7 +139,7 @@ Getting Started
 		Lion: Apple->About This Mac->More Info...->System Report->USB
 		You may need to refresh (command-R) to see it update.
 		In Arduino mode, it will appear as 'Arduino UNO'
-		In DFU mode, it will appear as 'Arduino UNO DFU'
+		In DFU mode, it will appear as 'Arduino UNO DFU' or showing the chip's name.
 		In UnoJoy mode, it will appear at the top as 'UnoJoy Joystick'
 	
 	On Linux, you can type lsusb to your terminal.
